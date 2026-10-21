@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI Akidah Islam - MTs Negeri 1 Gorontalo Utara</title>
+    <!-- Tailwind CSS CDN untuk Styling Cepat & Responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-islamic-pattern {
+            background-color: #064e3b;
+            background-image: radial-gradient(#047857 1px, transparent 1px), radial-gradient(#047857 1px, #064e3b 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-islamic-pattern text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-400">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-400 text-emerald-950 p-2.5 rounded-xl font-black text-xl shadow-inner">☪</div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl tracking-tight text-amber-300">MPI AKIDAH ISLAM - FASE D</h1>
+                    <p class="text-xs text-emerald-100 opacity-90">MTs Negeri 1 Gorontalo Utara | Pesisir & Agraris</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-emerald-900/80 px-3 py-1.5 rounded-full border border-emerald-700 text-xs text-amber-200 font-medium">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Moda: Offline & Terhubung Database</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-grow my-4 space-y-6">
+
+        <!-- KARTU IDENTITAS SISWA -->
+        <section id="card-identitas" class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 sm:p-8">
+            <div class="text-center max-w-lg mx-auto space-y-2 mb-6">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Selamat Datang, Murid Hebat!</span>
+                <h2 class="text-2xl font-black text-emerald-900">Eksplorasi Modular Akidah Islam</h2>
+                <p class="text-sm text-slate-600">Silakan masukkan identitas terlebih dahulu sebelum memulai pembelajaran dan evaluasi kuis.</p>
+            </div>
+            
+            <form id="form-identitas" class="space-y-4 max-w-md mx-auto">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Nama Lengkap Siswa</label>
+                    <input type="text" id="input-nama" required placeholder="Contoh: Siti Aisyah" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-sm font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Kelas</label>
+                    <select id="input-kelas" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-sm font-medium bg-white">
+                        <option value="">-- Pilih Kelas --</option>
+                        <option value="VII-A">Kelas VII-A</option>
+                        <option value="VII-B">Kelas VII-B</option>
+                        <option value="VII-C">Kelas VII-C</option>
+                        <option value="VII-D">Kelas VII-D</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-emerald-700/20 text-sm tracking-wide">
+                    Mulai Belajar & Kuis 🚀
+                </button>
+            </form>
+        </section>
+
+        <!-- MODUL PEMBELAJARAN (Disembunyikan sebelum input identitas) -->
+        <div id="container-modul" class="hidden space-y-6">
+
+            <!-- Navigasi Tab / Modul -->
+            <div class="flex flex-wrap gap-2 justify-center bg-white p-2 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="gantiTab('materi')" id="btn-tab-materi" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white transition">📖 Ringkasan Materi</button>
+                <button onclick="gantiTab('kuis')" id="btn-tab-kuis" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-100 transition">✍️ Kuis Formatif</button>
+            </div>
+
+            <!-- TAB 1: MATERI -->
+            <div id="tab-materi" class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 sm:p-8 space-y-6">
+                <div class="border-b pb-4">
+                    <span class="text-emerald-700 font-bold text-xs uppercase tracking-wider">Modul Pembelajaran 1</span>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Hakikat Akidah Islam & 3 Unsur Pokok Agama</h3>
+                </div>
+
+                <div class="prose text-sm text-slate-700 space-y-4">
+                    <p>Secara bahasa, kata <strong>Akidah</strong> berasal dari bahasa Arab <em>'Aqada - Ya'qidu - 'Aqidatan</em> yang artinya ikatan, simpul, atau keyakinan yang kuat. Secara istilah, akidah adalah keyakinan hati yang membenarkan adanya Allah Swt. beserta segala sifat, asma, dan ketetapan-Nya tanpa ada keraguan sedikit pun.</p>
+                    
+                    <div class="bg-emerald-50 border-l-4 border-emerald-600 p-4 rounded-r-xl">
+                        <h4 class="font-bold text-emerald-900 mb-1">Kontekstual Wilayah Pesisir & Agraris Gorontalo Utara</h4>
+                        <p class="text-xs text-emerald-800">Sebagaimana nelayan di pesisir Atinggola membaca arah angin dan gelombang dengan keyakinan penuh sebelum melaut, atau petani di agraris Kwandang yang menyandarkan hasil panen kepada rahmat Allah—begitulah akidah berfungsi sebagai sauh (jangkar) hati seorang mukmin dalam menjalani kehidupan sehari-hari.</p>
+                    </div>
+
+                    <h4 class="font-bold text-slate-900 text-base pt-2">Tiga Unsur Pokok Agama (Hadis Jibril)</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center space-y-1">
+                            <div class="text-xl">🌱</div>
+                            <h5 class="font-bold text-emerald-800">1. IMAN</h5>
+                            <p class="text-xs text-slate-600">Akar keyakinan di dalam hati (Rukun Iman).</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center space-y-1">
+                            <div class="text-xl">🌿</div>
+                            <h5 class="font-bold text-emerald-800">2. ISLAM</h5>
+                            <p class="text-xs text-slate-600">Batang amal perbuatan lahiriah (Rukun Islam).</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center space-y-1">
+                            <div class="text-xl">🍎</div>
+                            <h5 class="font-bold text-emerald-800">3. IHSAN</h5>
+                            <p class="text-xs text-slate-600">Buah kebaikan, merasa diawasi Allah Swt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button onclick="gantiTab('kuis')" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold px-6 py-3 rounded-xl transition shadow text-sm">
+                        Lanjut ke Kuis Formatif ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 2: KUIS FORMATIF -->
+            <div id="tab-kuis" class="hidden bg-white rounded-2xl shadow-lg border border-slate-100 p-6 sm:p-8 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-amber-600 font-bold text-xs uppercase tracking-wider">Evaluasi Mandiri</span>
+                        <h3 class="text-xl font-extrabold text-slate-900">Kuis Formatif Akidah Islam</h3>
+                    </div>
+                    <div id="badge-progres" class="text-xs bg-slate-100 font-bold px-3 py-1.5 rounded-full text-slate-600">Soal 1 dari 3</div>
+                </div>
+
+                <!-- Area Pertanyaan -->
+                <div id="area-soal" class="space-y-4">
+                    <!-- Soal akan di-render secara dinamis oleh JavaScript -->
+                </div>
+
+                <!-- Tombol Navigasi Kuis -->
+                <div class="flex justify-between pt-4 border-t">
+                    <button id="btn-sebelumnya" onclick="soalSebelumnya()" class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-30" disabled>← Sebelumnya</button>
+                    <button id="btn-selanjutnya" onclick="soalBerikutnya()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2 rounded-xl text-xs font-bold transition shadow">Selanjutnya →</button>
+                </div>
+            </div>
+
+            <!-- TAB 3: HASIL & SERTIFIKAT (Hidden Awal) -->
+            <div id="tab-hasil" class="hidden bg-white rounded-2xl shadow-lg border border-slate-100 p-6 sm:p-8 text-center space-y-6">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-3xl font-bold shadow-inner">🏆</div>
+                <div class="space-y-1">
+                    <h3 class="text-2xl font-black text-slate-900">Kuis Telah Selesai!</h3>
+                    <p id="teks-skor-akhir" class="text-lg font-bold text-emerald-700">Nilai Anda: 100</p>
+                    <p class="text-xs text-slate-500">Data hasil belajar Anda telah tersimpan otomatis ke Database Google Sheets.</p>
+                </div>
+                
+                <div class="bg-slate-50 border p-4 rounded-xl max-w-sm mx-auto text-left text-xs space-y-1">
+                    <div><strong>Nama:</strong> <span id="res-nama">-</span></div>
+                    <div><strong>Kelas:</strong> <span id="res-kelas">-</span></div>
+                    <div><strong>Benar:</strong> <span id="res-benar">0</span> | <strong>Salah:</strong> <span id="res-salah">0</span></div>
+                    <div><strong>Status:</strong> <span id="res-status" class="font-bold text-emerald-600">-</span></div>
+                </div>
+
+                <button onclick="location.reload()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-3 rounded-xl transition text-xs">
+                    Ulangi Kuis / Ganti Nama 🔄
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 text-xs text-slate-500 border-t bg-white mt-auto">
+        <p>Media Pembelajaran Interaktif (MPI) dikembangkan oleh <strong>Novi Mardiyana Haidari, S.Pd</strong></p>
+        <p class="mt-1">MTs Negeri 1 Gorontalo Utara — Provinsi Gorontalo</p>
+    </footer>
+
+    <!-- SCRIPT LOGIKA APLIKASI & GOOGLE SHEETS API -->
+    <script>
+        // URL Web App Google Apps Script Anda
+        const SPREADSHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby3MflvJm8UBvDv8WXjw_WzO8CjBs7XdStPawBMJisRyM7tdfsZaDCaK9v73Sw8sCJU/exec";
+
+        let siswaData = { nama: "", kelas: "" };
+        let soalIndex = 0;
+        let skorBenar = 0;
+        let jawabanSiswa = [];
+
+        // Bank Soal Interaktif
+        const dataSoal = [
+            {
+                id: 1,
+                pertanyaan: "Secara bahasa, kata 'Aqada' yang menjadi akar kata Akidah memiliki arti...",
+                pilihan: ["Perbuatan baik", "Ikatan atau simpul yang kuat", "Aturan ibadah harian", "Perhitungan amal"],
+                kunci: 1,
+                pembahasan: "Akidah secara bahasa berarti ikatan atau simpul yang kuat (al-'aqdu), menyimbolkan keyakinan hati yang tidak mudah lepas."
+            },
+            {
+                id: 2,
+                pertanyaan: "Dalam Hadis Jibril, tiga unsur pokok agama Islam terdiri dari Iman, Islam, dan...",
+                pilihan: ["Ihsan", "Ikhlas", "Istiqamah", "Itqan"],
+                kunci: 0,
+                pembahasan: "Tiga unsur pokok agama Islam yang diajarkan Malaikat Jibril kepada Nabi Muhammad saw adalah Iman (keyakinan), Islam (amal lahir), dan Ihsan (penghambaan tertinggi)."
+            },
+            {
+                id: 3,
+                pertanyaan: "Bagaimana fungsi akidah bagi seorang mukmin dalam menjalani kehidupan sehari-hari di lingkungan pesisir maupun agraris?",
+                pilihan: ["Sebagai beban hidup tambahan", "Sebagai sauh (jangkar) hati agar tidak mudah goyah", "Hanya formalitas belajar di kelas", "Sebagai syarat mendapatkan pujian"],
+                kunci: 1,
+                pembahasan: "Akidah berfungsi sebagai jangkar atau sauh spiritual yang menjaga keteguhan hati seorang mukmin menghadapi dinamika kehidupan."
+            }
+        ];
+
+        // Handle Identitas Form Submit
+        document.getElementById('form-identitas').addEventListener('submit', function(e) {
+            e.preventDefault();
+            siswaData.nama = document.getElementById('input-nama').value.trim();
+            siswaData.kelas = document.getElementById('input-kelas').value;
+
+            if(!siswaData.nama || !siswaData.kelas) {
+                alert("Mohon isi nama dan kelas terlebih dahulu!");
+                return;
+            }
+
+            // Sembunyikan form identitas, tampilkan modul
+            document.getElementById('card-identitas').classList.add('hidden');
+            document.getElementById('container-modul').classList.remove('hidden');
+            renderSoal();
+        });
+
+        // Navigasi Tab
+        function gantiTab(target) {
+            document.getElementById('tab-materi').classList.add('hidden');
+            document.getElementById('tab-kuis').classList.add('hidden');
+            document.getElementById('btn-tab-materi').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-100 transition";
+            document.getElementById('btn-tab-kuis').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-100 transition";
+
+            if(target === 'materi') {
+                document.getElementById('tab-materi').classList.remove('hidden');
+                document.getElementById('btn-tab-materi').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white transition";
+            } else if(target === 'kuis') {
+                document.getElementById('tab-kuis').classList.remove('hidden');
+                document.getElementById('btn-tab-kuis').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white transition";
+            }
+        }
+
+        // Render Soal Kuis
+        function renderSoal() {
+            const current = dataSoal[soalIndex];
+            document.getElementById('badge-progres').innerText = `Soal ${soalIndex + 1} dari ${dataSoal.length}`;
+            
+            let html = `
+                <div class="space-y-3">
+                    <h4 class="font-bold text-slate-800 text-base sm:text-lg">${soalIndex + 1}. ${current.pertanyaan}</h4>
+                    <div class="space-y-2 pt-2">
+            `;
+
+            current.pilihan.forEach((pil, idx) => {
+                let checked = jawabanSiswa[soalIndex] === idx ? 'checked' : '';
+                html += `
+                    <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                        <input type="radio" name="pilihan-jawaban" value="${idx}" ${checked} class="w-4 h-4 text-emerald-700 focus:ring-emerald-600">
+                        <span class="text-sm font-medium text-slate-700">${pil}</span>
+                    </label>
+                `;
+            });
+
+            html += `</div></div>`;
+            document.getElementById('area-soal').innerHTML = html;
+
+            document.getElementById('btn-sebelumnya').disabled = soalIndex === 0;
+            document.getElementById('btn-selanjutnya').innerText = soalIndex === dataSoal.length - 1 ? 'Kirim Jawaban ➔' : 'Selanjutnya →';
+        }
+
+        // Tombol Soal Sebelumnya
+        function soalSebelumnya() {
+            simpanJawabanPilihan();
+            if(soalIndex > 0) {
+                soalIndex--;
+                renderSoal();
+            }
+        }
+
+        // Tombol Soal Berikutnya / Kirim
+        function soalBerikutnya() {
+            if(!simpanJawabanPilihan()) {
+                alert("Mohon pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if(soalIndex < dataSoal.length - 1) {
+                soalIndex++;
+                renderSoal();
+            } else {
+                selesaikanKuis();
+            }
+        }
+
+        function simpanJawabanPilihan() {
+            const selected = document.querySelector('input[name="pilihan-jawaban"]:checked');
+            if(!selected) return false;
+            jawabanSiswa[soalIndex] = parseInt(selected.value);
+            return true;
+        }
+
+        // Hitung Hasil & Kirim ke Google Sheets
+        function selesaikanKuis() {
+            skorBenar = 0;
+            let salah = 0;
+
+            dataSoal.forEach((soal, idx) => {
+                if(jawabanSiswa[idx] === soal.kunci) {
+                    skorBenar++;
+                } else {
+                    salah++;
+                }
+            });
+
+            const nilaiAkhir = Math.round((skorBenar / dataSoal.length) * 100);
+            const statusKualifikasi = nilaiAkhir >= 75 ? "LULUS" : "REMIDIAL";
+
+            // Tampilkan UI Hasil
+            document.getElementById('tab-kuis').classList.add('hidden');
+            document.getElementById('tab-hasil').classList.remove('hidden');
+            
+            document.getElementById('teks-skor-akhir').innerText = `Nilai Akhir: ${nilaiAkhir}`;
+            document.getElementById('res-nama').innerText = siswaData.nama;
+            document.getElementById('res-kelas').innerText = siswaData.kelas;
+            document.getElementById('res-benar').innerText = skorBenar;
+            document.getElementById('res-salah').innerText = salah;
+            document.getElementById('res-status').innerText = statusKualifikasi;
+
+            // Kirim Data ke Google Sheets Web App
+            kirimKeDatabaseSpreadsheet({
+                namaSiswa: siswaData.nama,
+                kelas: siswaData.kelas,
+                jumlahBenar: skorBenar,
+                jumlahSalah: salah,
+                nilaiAkhir: nilaiAkhir,
+                status: statusKualifikasi
+            });
+        }
+
+        function kirimKeDatabaseSpreadsheet(payload) {
+            fetch(SPREADSHEET_WEB_APP_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                console.log("Data berhasil terkirim ke Google Sheets.");
+            })
+            .catch((err) => {
+                console.error("Gagal mengirim data:", err);
+            });
+        }
+    </script>
+</body>
+</html>
